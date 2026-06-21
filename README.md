@@ -1,6 +1,6 @@
 # Calories Calculator 🍽️
 
-A cute, pixel-art calorie and meal tracker. Pick foods, log them under the
+A pixel-art calorie and meal tracker. Pick foods, log them under the
 right meal, and see your day add up against a target calculated from your
 own body stats — all stored locally in your browser.
 
