@@ -30,15 +30,15 @@ export function CalorieRing({ kcal, goal }: CalorieRingProps) {
           fill="none"
           stroke="var(--color-berry)"
           strokeWidth={STROKE}
-          strokeLinecap="round"
+          strokeLinecap="square"
           strokeDasharray={CIRCUMFERENCE}
           strokeDashoffset={offset}
           className="transition-all duration-500 ease-out"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold text-plum leading-none">{Math.round(kcal)}</span>
-        <span className="text-xs text-plum-soft mt-1">of {goal} kcal</span>
+        <span className="font-pixel-display text-xl leading-none text-plum">{Math.round(kcal)}</span>
+        <span className="mt-2 font-pixel-body text-base text-plum-soft">of {goal} kcal</span>
       </div>
     </div>
   )

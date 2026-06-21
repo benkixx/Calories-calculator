@@ -26,15 +26,16 @@ export function MealTabs({ config, active, onChange, kcalByMeal }: MealTabsProps
             key={slot.id}
             type="button"
             onClick={() => onChange(slot.id)}
-            className={`rounded-full border-2 px-4 py-2 text-sm font-semibold transition-colors ${
-              isActive
-                ? 'border-berry bg-berry text-white'
-                : 'border-peach bg-white text-plum hover:bg-peach/30'
+            className={`pixel-btn px-4 py-2 font-pixel-display text-[11px] transition-colors ${
+              isActive ? 'bg-berry text-white' : 'bg-white text-plum hover:bg-peach/30'
             }`}
           >
             {meta.icon} {label}
             {kcal > 0 && (
-              <span className={isActive ? 'text-white/80' : 'text-plum-soft'}> · {Math.round(kcal)} kcal</span>
+              <span className={`font-pixel-body text-base ${isActive ? 'text-white/80' : 'text-plum-soft'}`}>
+                {' '}
+                · {Math.round(kcal)} kcal
+              </span>
             )}
           </button>
         )

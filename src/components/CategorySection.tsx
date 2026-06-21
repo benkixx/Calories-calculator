@@ -12,16 +12,16 @@ export function CategorySection({ title, count, forceOpen, children }: CategoryS
   const isOpen = open || forceOpen
 
   return (
-    <div className="mb-4 rounded-3xl bg-white/60 p-3">
+    <div className="pixel-panel mb-4 bg-white p-3">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between px-1 py-1 text-left"
       >
-        <h2 className="font-display text-lg font-bold text-plum">
-          {title} <span className="text-sm font-normal text-plum-soft">({count})</span>
+        <h2 className="font-pixel-display text-sm text-plum">
+          {title} <span className="font-pixel-body text-lg font-normal text-plum-soft">({count})</span>
         </h2>
-        <span className={`text-plum-soft transition-transform ${isOpen ? 'rotate-180' : ''}`}>⌄</span>
+        <span className={`font-pixel-display text-plum-soft transition-transform ${isOpen ? 'rotate-180' : ''}`}>⌄</span>
       </button>
 
       {isOpen && (

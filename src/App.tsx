@@ -95,7 +95,7 @@ function App() {
   const activeMealLabel = mealTypeMeta(activeMealSlot.type).label
 
   return (
-    <div className="min-h-screen bg-cream pb-16">
+    <div className="pixel-mode min-h-screen pb-16">
       {(!profile || editingProfile) && (
         <ProfileModal
           initial={profile}
@@ -111,39 +111,41 @@ function App() {
         />
       )}
 
-      <header className="px-6 pt-10 text-center">
-        <h1 className="font-display text-4xl font-bold text-berry">Calories Calculator</h1>
-        <p className="mt-2 text-plum-soft">
-          {profile ? `Hi ${profile.name}! ` : ''}Log a meal, close it, come back for the next one.
-        </p>
-        <div className="mt-1 flex justify-center gap-4 text-xs">
-          {profile && (
-            <button type="button" onClick={() => setEditingProfile(true)} className="text-berry underline">
-              Edit profile
+      <header className="px-4 pt-8 text-center md:px-6">
+        <div className="pixel-panel mx-auto max-w-2xl bg-white p-6">
+          <h1 className="font-pixel-display text-lg text-berry md:text-2xl">CALORIES CALCULATOR</h1>
+          <p className="mt-3 font-pixel-body text-xl text-plum-soft">
+            {profile ? `Hi ${profile.name}! ` : ''}Log a meal, close it, come back for the next one.
+          </p>
+          <div className="mt-2 flex justify-center gap-4 font-pixel-body text-base">
+            {profile && (
+              <button type="button" onClick={() => setEditingProfile(true)} className="text-berry underline">
+                Edit profile
+              </button>
+            )}
+            <button type="button" onClick={() => setEditingMeals(true)} className="text-berry underline">
+              Edit meals
             </button>
-          )}
-          <button type="button" onClick={() => setEditingMeals(true)} className="text-berry underline">
-            Edit meals
-          </button>
-        </div>
+          </div>
 
-        <div className="mt-5">
-          <MealTabs config={mealConfig} active={activeMeal} onChange={setActiveMeal} kcalByMeal={kcalByMeal} />
-        </div>
+          <div className="mt-5">
+            <MealTabs config={mealConfig} active={activeMeal} onChange={setActiveMeal} kcalByMeal={kcalByMeal} />
+          </div>
 
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search foods… 🔍"
-          className="mx-auto mt-4 block w-full max-w-xs rounded-full border border-peach bg-white px-4 py-2 text-center text-sm text-plum shadow-[0_3px_0_rgba(0,0,0,0.05)] focus:outline-none focus:ring-2 focus:ring-berry"
-        />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search foods… 🔍"
+            className="pixel-chip mx-auto mt-4 block w-full max-w-xs bg-white px-4 py-2 text-center font-pixel-body text-lg text-plum focus:outline-none focus:ring-2 focus:ring-berry"
+          />
+        </div>
       </header>
 
-      <main className="mx-auto mt-8 flex max-w-6xl flex-col gap-8 px-6 lg:flex-row">
+      <main className="mx-auto mt-8 flex max-w-6xl flex-col gap-8 px-4 md:px-6 lg:flex-row">
         <section className="flex-1">
           {groups.length === 0 && (
-            <p className="text-center text-plum-soft">No foods match "{query}" 🥲</p>
+            <p className="text-center font-pixel-body text-lg text-plum-soft">No foods match "{query}" 🥲</p>
           )}
           {groups.map(({ category, items }) => (
             <CategorySection
@@ -173,20 +175,20 @@ function App() {
               targetKcal={target.kcal}
             />
 
-            <div className="rounded-3xl bg-white p-5 shadow-[0_4px_0_rgba(0,0,0,0.05)]">
+            <div className="pixel-panel bg-white p-5">
               <div className="flex items-center justify-between">
-                <h2 className="font-display text-lg font-bold text-plum">My Plate</h2>
+                <h2 className="font-pixel-display text-xs text-plum">MY PLATE</h2>
                 {selectedDate !== todayKey() && (
                   <button
                     type="button"
                     onClick={() => setSelectedDate(todayKey())}
-                    className="text-xs text-berry underline"
+                    className="font-pixel-body text-base text-berry underline"
                   >
                     Back to today
                   </button>
                 )}
               </div>
-              <p className="text-center text-xs text-plum-soft">
+              <p className="text-center font-pixel-body text-base text-plum-soft">
                 {new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', {
                   weekday: 'long',
                   month: 'short',
@@ -204,12 +206,12 @@ function App() {
                 <MacroBar label="Fat" grams={dayTotals.fat} goalGrams={target.fat} color="var(--color-butter)" />
               </div>
 
-              <p className="mt-5 text-center text-xs font-semibold text-plum-soft">
-                {activeMealLabel} items
+              <p className="mt-5 text-center font-pixel-display text-[11px] text-plum-soft">
+                {activeMealLabel.toUpperCase()} ITEMS
               </p>
-              <ul className="mt-1 flex flex-col gap-2">
+              <ul className="mt-2 flex flex-col gap-2">
                 {Object.keys(amounts).length === 0 && (
-                  <li className="text-center text-sm text-plum-soft">
+                  <li className="text-center font-pixel-body text-lg text-plum-soft">
                     Nothing in {activeMealLabel.toLowerCase()} yet 🍽️
                   </li>
                 )}
@@ -219,7 +221,7 @@ function App() {
                     const grams = gramsFor(f, amounts[f.id])
                     const kcal = (f.kcal100 / 100) * grams
                     return (
-                      <li key={f.id} className="flex items-center justify-between text-sm">
+                      <li key={f.id} className="flex items-center justify-between font-pixel-body text-lg">
                         <span>
                           {f.name}{' '}
                           <span className="text-plum-soft">

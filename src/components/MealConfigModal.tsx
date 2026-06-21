@@ -41,10 +41,10 @@ export function MealConfigModal({ initial, onSave, onClose }: MealConfigModalPro
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-plum/40 p-4">
-      <div className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl">
-        <h2 className="mb-1 text-center font-display text-xl font-bold text-plum">🍽️ Your meals</h2>
-        <p className="mb-4 text-center text-xs text-plum-soft">
+    <div className="pixel-mode fixed inset-0 z-50 flex items-center justify-center bg-plum/40 p-4">
+      <div className="pixel-panel w-full max-w-sm bg-white p-6">
+        <h2 className="mb-1 text-center font-pixel-display text-sm text-plum">🍽️ YOUR MEALS</h2>
+        <p className="mb-4 text-center font-pixel-body text-base text-plum-soft">
           How many meals do you eat per day?
         </p>
 
@@ -54,7 +54,7 @@ export function MealConfigModal({ initial, onSave, onClose }: MealConfigModalPro
               key={n}
               type="button"
               onClick={() => setMealCount(n)}
-              className={`h-9 w-9 rounded-full text-sm font-semibold ${
+              className={`pixel-btn flex h-9 w-9 items-center justify-center font-pixel-display text-xs ${
                 count === n ? 'bg-berry text-white' : 'bg-peach/50 text-plum'
               }`}
             >
@@ -67,19 +67,19 @@ export function MealConfigModal({ initial, onSave, onClose }: MealConfigModalPro
             max={MAX_MEALS}
             value={count}
             onChange={(e) => setMealCount(Number(e.target.value) || 1)}
-            className="h-9 w-16 rounded-full border border-peach px-2 text-center text-sm"
+            className="pixel-chip h-9 w-16 bg-white px-2 text-center font-pixel-body text-base"
             aria-label="Or type a custom number of meals"
           />
         </div>
 
         <div className="mt-5 flex flex-col gap-2">
           {types.slice(0, count).map((type, i) => (
-            <label key={i} className="flex items-center justify-between gap-3 text-sm text-plum">
-              <span className="font-semibold">Meal {i + 1}</span>
+            <label key={i} className="flex items-center justify-between gap-3 font-pixel-body text-lg text-plum">
+              <span className="font-pixel-display text-[11px]">MEAL {i + 1}</span>
               <select
                 value={type}
                 onChange={(e) => setTypeAt(i, e.target.value as MealType)}
-                className="flex-1 rounded-full border border-peach px-3 py-1.5"
+                className="pixel-chip flex-1 bg-white px-3 py-1.5"
               >
                 {MEAL_TYPE_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -95,16 +95,16 @@ export function MealConfigModal({ initial, onSave, onClose }: MealConfigModalPro
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 rounded-full bg-peach/60 py-2 text-sm font-semibold text-plum"
+            className="pixel-btn flex-1 bg-peach/60 py-2 font-pixel-display text-xs text-plum"
           >
-            Cancel
+            CANCEL
           </button>
           <button
             type="button"
             onClick={submit}
-            className="flex-1 rounded-full bg-berry py-2 text-sm font-semibold text-white"
+            className="pixel-btn flex-1 bg-berry py-2 font-pixel-display text-xs text-white"
           >
-            Save
+            SAVE
           </button>
         </div>
       </div>

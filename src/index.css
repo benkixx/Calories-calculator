@@ -3,6 +3,8 @@
 @theme {
   --font-display: "Baloo 2", "Quicksand", system-ui, sans-serif;
   --font-body: "Quicksand", system-ui, sans-serif;
+  --font-pixel-display: "Press Start 2P", monospace;
+  --font-pixel-body: "VT323", monospace;
 
   --color-cream: #fff8f0;
   --color-peach: #ffe3d3;
@@ -29,4 +31,56 @@ h1, h2, h3 {
 
 * {
   box-sizing: border-box;
+}
+
+/* --- Pixel mode: retro game-UI treatment for the landing page --- */
+
+.pixel-mode {
+  font-family: var(--font-pixel-body);
+  background-color: var(--color-cream);
+  background-image:
+    linear-gradient(rgba(91, 75, 90, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 75, 90, 0.05) 1px, transparent 1px);
+  background-size: 8px 8px;
+  image-rendering: pixelated;
+}
+
+.pixel-mode * {
+  image-rendering: pixelated;
+}
+
+.pixel-panel {
+  border: 3px solid var(--color-plum);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 0 var(--color-plum);
+  background: #fff;
+}
+
+.pixel-btn {
+  border: 3px solid var(--color-plum);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 0 var(--color-plum);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+  cursor: pointer;
+}
+
+.pixel-btn:hover {
+  filter: brightness(1.04);
+}
+
+.pixel-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 0 var(--color-plum);
+}
+
+.pixel-btn-dashed {
+  border: 3px dashed var(--color-plum-soft);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pixel-chip {
+  border: 2px solid var(--color-plum);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 0 var(--color-plum);
 }

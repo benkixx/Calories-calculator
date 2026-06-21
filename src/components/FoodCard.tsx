@@ -30,16 +30,15 @@ export function FoodCard({ food, amount, onChange }: FoodCardProps) {
 
   return (
     <div
-      className={`relative flex flex-col items-center gap-1 rounded-3xl border-2 p-3 text-center shadow-[0_4px_0_rgba(0,0,0,0.05)] transition-transform hover:-translate-y-1 ${
-        active ? 'border-berry bg-white' : 'border-white/0 bg-white'
-      }`}
+      className="pixel-panel relative flex flex-col items-center gap-1 bg-white p-3 text-center"
+      style={active ? { boxShadow: '5px 5px 0 0 var(--color-berry)', borderColor: 'var(--color-berry)' } : undefined}
     >
-      <div className={`flex h-20 w-20 items-center justify-center rounded-full ${food.bg}`}>
-        <img src={food.icon} alt={food.name} className="h-14 w-14 object-contain" />
+      <div className={`pixel-chip flex h-16 w-16 items-center justify-center ${food.bg}`}>
+        <img src={food.icon} alt={food.name} className="h-11 w-11 object-contain" />
       </div>
-      <p className="font-display text-sm font-semibold">{food.name}</p>
-      <p className="text-xs text-plum-soft">{caption}</p>
-      <p className="text-xs font-semibold text-berry">
+      <p className="font-pixel-display text-[11px] leading-relaxed text-plum">{food.name}</p>
+      <p className="font-pixel-body text-base text-plum-soft">{caption}</p>
+      <p className="font-pixel-body text-base font-semibold text-berry">
         {active ? `${Math.round(kcal)} kcal (${Math.round(grams)}g)` : '—'}
       </p>
 
@@ -49,7 +48,7 @@ export function FoodCard({ food, amount, onChange }: FoodCardProps) {
           onClick={decrement}
           disabled={amount === 0}
           aria-label={`Remove ${food.name}`}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-peach text-plum disabled:opacity-30"
+          className="pixel-btn flex h-7 w-7 items-center justify-center bg-peach font-pixel-display text-plum disabled:opacity-30"
         >
           −
         </button>
@@ -62,17 +61,17 @@ export function FoodCard({ food, amount, onChange }: FoodCardProps) {
             value={amount === 0 ? '' : amount}
             placeholder="0"
             onChange={(e) => onChange(Math.max(Number(e.target.value) || 0, 0))}
-            className="w-14 rounded-full border border-peach bg-cream px-1 py-0.5 text-center text-sm"
+            className="pixel-chip w-14 bg-cream px-1 py-0.5 text-center font-pixel-body text-base"
           />
         ) : (
-          <span className="w-5 text-sm font-semibold">{amount}</span>
+          <span className="w-5 font-pixel-body text-lg font-semibold">{amount}</span>
         )}
 
         <button
           type="button"
           onClick={increment}
           aria-label={`Add ${food.name}`}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-mint-deep text-white"
+          className="pixel-btn flex h-7 w-7 items-center justify-center bg-mint-deep font-pixel-display text-white"
         >
           +
         </button>

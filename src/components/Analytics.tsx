@@ -45,22 +45,22 @@ export function Analytics({ days, selectedDate, targetKcal, goal }: AnalyticsPro
   }
 
   return (
-    <div className="rounded-3xl bg-white p-4 shadow-[0_4px_0_rgba(0,0,0,0.05)]">
-      <h3 className="mb-2 text-center font-display text-sm font-bold text-plum">Last 7 days</h3>
+    <div className="pixel-panel bg-white p-4">
+      <h3 className="mb-2 text-center font-pixel-display text-xs text-plum">LAST 7 DAYS</h3>
       <div className="flex items-end justify-between gap-1.5" style={{ height: 70 }}>
         {last7.map(({ key, kcal }) => (
           <div key={key} className="flex flex-1 flex-col items-center justify-end gap-1">
             <div
-              className={`w-full rounded-t-md ${key === selectedDate ? 'bg-berry' : 'bg-peach'}`}
+              className={`w-full border-2 border-plum ${key === selectedDate ? 'bg-berry' : 'bg-peach'}`}
               style={{ height: `${Math.min((kcal / maxKcal) * 100, 100)}%`, minHeight: kcal > 0 ? 4 : 0 }}
             />
-            <span className="text-[9px] text-plum-soft">
+            <span className="font-pixel-body text-sm text-plum-soft">
               {new Date(key + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'narrow' })}
             </span>
           </div>
         ))}
       </div>
-      <p className="mt-3 text-center text-xs text-plum-soft">{message}</p>
+      <p className="mt-3 text-center font-pixel-body text-base text-plum-soft">{message}</p>
     </div>
   )
 }

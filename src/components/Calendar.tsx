@@ -48,20 +48,20 @@ export function Calendar({ selectedDate, onSelect, days, targetKcal }: CalendarP
   }
 
   return (
-    <div className="rounded-3xl bg-white p-4 shadow-[0_4px_0_rgba(0,0,0,0.05)]">
+    <div className="pixel-panel bg-white p-4">
       <div className="mb-2 flex items-center justify-between">
-        <button type="button" onClick={() => changeMonth(-1)} className="px-2 text-plum-soft" aria-label="Previous month">
+        <button type="button" onClick={() => changeMonth(-1)} className="px-2 font-pixel-display text-plum-soft" aria-label="Previous month">
           ‹
         </button>
-        <span className="font-display text-sm font-bold text-plum">
-          {first.toLocaleString('en-US', { month: 'long' })} {viewYear}
+        <span className="font-pixel-display text-xs text-plum">
+          {first.toLocaleString('en-US', { month: 'long' }).toUpperCase()} {viewYear}
         </span>
-        <button type="button" onClick={() => changeMonth(1)} className="px-2 text-plum-soft" aria-label="Next month">
+        <button type="button" onClick={() => changeMonth(1)} className="px-2 font-pixel-display text-plum-soft" aria-label="Next month">
           ›
         </button>
       </div>
 
-      <div className="grid grid-cols-7 gap-1 text-center text-[10px] text-plum-soft">
+      <div className="grid grid-cols-7 gap-1 text-center font-pixel-body text-sm text-plum-soft">
         {WEEKDAYS.map((w, i) => (
           <span key={i}>{w}</span>
         ))}
@@ -82,13 +82,13 @@ export function Calendar({ selectedDate, onSelect, days, targetKcal }: CalendarP
               type="button"
               aria-label={`Select ${key}`}
               onClick={() => onSelect(key)}
-              className={`relative flex flex-col items-center rounded-full py-1 text-xs ${
-                isSelected ? 'bg-berry text-white' : isToday ? 'bg-peach text-plum' : 'text-plum hover:bg-cream'
+              className={`relative flex flex-col items-center py-1 font-pixel-body text-sm ${
+                isSelected ? 'pixel-chip bg-berry text-white' : isToday ? 'pixel-chip bg-peach text-plum' : 'text-plum hover:bg-cream'
               }`}
             >
               {day}
               {dayHasEntries(log) && (
-                <span className={`mt-0.5 h-1.5 w-1.5 rounded-full ${dotColor(dayKcal, targetKcal)}`} />
+                <span className={`mt-0.5 h-1.5 w-1.5 ${dotColor(dayKcal, targetKcal)}`} />
               )}
             </button>
           )
