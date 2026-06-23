@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Calories Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A retro-styled calorie tracker built with React, TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+Live demo:
+[https://benkixx.github.io/Calories-calculator/](https://benkixx.github.io/Calories-calculator/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+Calories Calculator helps you log meals quickly, track calories and macros, and review your day in a simple pixel-art interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshots
 
-## Expanding the ESLint configuration
+![Main screen](./screens/screen-1.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Tracking panel](./screens/screen-2.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Profile-based calorie and macro targets
+- Meal tabs for breakfast, lunch, dinner, snacks, and drinks
+- Searchable food library with visual cards
+- Daily calendar with intake overview
+- Macro progress and calorie ring
+- 7-day summary panel
+- Data saved locally in the browser
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- GitHub Pages for deployment
+
+## Getting Started
+
+### Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Start the app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```text
+src/
+  assets/        Food icons
+  components/    UI building blocks
+  data/          Food dataset
+  lib/           Nutrition, storage, and totals logic
+```
+
+## Deployment
+
+The project is configured to deploy automatically to GitHub Pages from the `main` branch with GitHub Actions.
+
+## License
+
+This project is available under the [MIT License](./LICENSE).
