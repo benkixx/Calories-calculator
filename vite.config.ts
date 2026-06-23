@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/Calories-calculator/' : '/',
+// Relative asset URLs keep the production build portable on GitHub Pages.
+export default defineConfig({
+  base: './',
   plugins: [react()],
-}))
+})
