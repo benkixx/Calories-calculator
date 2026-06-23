@@ -15,7 +15,10 @@
   <body>
     <div id="root"></div>
     <script>
-      if (window.location.hostname.endsWith('github.io')) {
+      const isGitHubPages = window.location.hostname.endsWith('github.io')
+      const isRootPagesPath = /\/Calories-calculator\/?$/.test(window.location.pathname)
+
+      if (isGitHubPages && isRootPagesPath) {
         window.location.replace(new URL('./dist/', window.location.href).toString())
       }
     </script>
